@@ -10,7 +10,7 @@ def initialize_game_state():
 
         # Ensure the deck and other parts of the game state are properly initialized
         st.session_state.game_state = {
-            "deck": game_state.get("deck", shuffle_deck(create_euchre_deck())),
+            "deck": game_state.get("deck", create_euchre_deck()),
             "players": game_state.get("players", {
                 "player1": {"hand": [], "score": 0},
                 "player2": {"hand": [], "score": 0},
