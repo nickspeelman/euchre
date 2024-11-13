@@ -41,3 +41,4 @@ def reset_game_state():
     }
     # Save the reset state to Google Sheets
     update_game_state(st.session_state.game_state)
+    print(st.session_state.game_state)
