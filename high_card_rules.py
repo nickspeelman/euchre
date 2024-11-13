@@ -1,3 +1,5 @@
+from google_sheets_manager import update_game_state
+
 def determine_high_card_winner(players):
     """Determines the winner based on the high card in each player's hand."""
     highest_card = None
@@ -24,3 +26,13 @@ def determine_round_winner(players):
     winning_card = players[winner]["hand"][0]
 
     return winner, winning_card
+
+def process_round_winner(players):
+    """Determines the winner of the round, updates the score, and saves the game state."""
+    winner, winning_card = determine_round_winner(players)
+    if winner:
+        players[winner]["score"] += 1  # Update the winner's score
+        update_game_state({"players": players, "winner": winner})
+        return winner, winning_card, f"The winner of this round is {winner} with the card {winning_card}!"
+    else:
+        return None, None, "Please deal cards before determining the winner."

@@ -1,0 +1,19 @@
+import streamlit as st
+import requests
+import json
+
+# Load the Apps Script URL and access key from Streamlit secrets
+APPS_SCRIPT_URL = st.secrets["APPS_SCRIPT_URL"]
+ACCESS_KEY = st.secrets["ACCESS_KEY"]
+
+# Function to fetch game state from Google Sheets via Apps Script
+def get_game_state():
+    response = requests.get(APPS_SCRIPT_URL, params={"key": ACCESS_KEY})
+    return response.json() if response.status_code == 200 else {}
+
+# Function to update game state in Google Sheets via Apps Script
+def update_game_state(game_state):
+    headers = {"Content-Type": "application/json"}
+    data = json.dumps({"key": ACCESS_KEY, **game_state})  # Include access key in the POST data
+    response = requests.post(APPS_SCRIPT_URL, headers=headers, data=data)
+    return response.status_code == 200
