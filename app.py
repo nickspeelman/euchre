@@ -6,6 +6,11 @@ from state_management import initialize_game_state, reset_game_state, update_gam
 # Step 1: Initialize the game state from Google Sheets or set a default
 initialize_game_state()
 
+# New Game Button - Allows players to start a fresh game
+if st.button("New Game"):
+    reset_game_state()
+    st.write("A new game has been started!")
+
 # Shuffle the deck
 if st.button("Shuffle Deck"):
     st.session_state.game_state["deck"] = shuffle_deck(st.session_state.game_state["deck"])
@@ -18,12 +23,14 @@ if st.button("Deal Cards"):
         st.session_state.game_state["deck"],
         st.session_state.game_state["players"]
     )
+    update_game_state(st.session_state.game_state)  # Update the game state after dealing cards
     st.write(message)
 
 # Determine the round winner
 if st.button("Determine Winner"):
     winner, winning_card, message = process_round_winner(st.session_state.game_state["players"])
     st.session_state.game_state["winner"] = winner
+    update_game_state(st.session_state.game_state)  # Update the game state after determining the winner
     st.write(message)
 
 # Display each player's hand and score
