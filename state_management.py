@@ -28,7 +28,7 @@ def initialize_game_state():
 def reset_game_state():
     """Reset the game state to the default configuration for a new game."""
     st.session_state.game_state = {
-        "deck": shuffle_deck(create_euchre_deck()),
+        "deck": create_euchre_deck(),
         "players": {
             "player1": {"hand": [], "score": 0},
             "player2": {"hand": [], "score": 0},
