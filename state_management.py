@@ -41,4 +41,5 @@ def reset_game_state():
         "current_turn": "N",
         "winner": None
     }
+    print("Reset game state:", st.session_state.game_state)  # Debugging print statement
     update_game_state(st.session_state.game_state)

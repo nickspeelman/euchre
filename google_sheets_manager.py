@@ -8,8 +8,14 @@ ACCESS_KEY = st.secrets["ACCESS_KEY"]
 
 # Function to fetch game state from Google Sheets via Apps Script
 def get_game_state():
+    """Fetch game state from Google Sheets."""
     response = requests.get(APPS_SCRIPT_URL, params={"key": ACCESS_KEY})
-    return response.json() if response.status_code == 200 else {}
+    print("Response content:", response.text)  # Debugging print statement
+    try:
+        return response.json() if response.status_code == 200 else {}
+    except ValueError:
+        print("Error decoding JSON. Response content:", response.text)
+        return {}
 
 # Function to update game state in Google Sheets via Apps Script
 def update_game_state(game_state):
