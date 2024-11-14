@@ -38,7 +38,3 @@ st.write("Player Hands and Scores:")
 for player, data in st.session_state.game_state["players"].items():
     st.write(f"{player}: Hand: {data['hand']} | Score: {data['score']}")
 
-# Reset the game state
-if st.button("Reset Game"):
-    reset_game_state()
-    st.write("Game reset!")
