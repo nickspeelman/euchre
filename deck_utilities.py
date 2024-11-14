@@ -29,5 +29,6 @@ def deal_cards_to_players(deck, players):
         players = deal_one_card_to_each_player(deck, players)
         update_game_state({"deck": deck, "players": players})
         return players, "Cards dealt to all players."
+        st.experimental_rerun()
     except ValueError as e:
         return players, str(e)
