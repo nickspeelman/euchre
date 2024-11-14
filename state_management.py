@@ -28,17 +28,15 @@ def initialize_game_state():
 def reset_game_state():
     """Reset the game state to the default configuration for a new game."""
     st.session_state.game_state = {
-        "deck": create_euchre_deck(),
+        "deck": shuffle_deck(create_euchre_deck()),
         "players": {
-            "player1": {"hand": [], "score": 0},
-            "player2": {"hand": [], "score": 0},
-            "player3": {"hand": [], "score": 0},
-            "player4": {"hand": [], "score": 0}
+            "N": {"name": "Player 1", "hand": [], "score": 0},
+            "E": {"name": "Player 2", "hand": [], "score": 0},
+            "S": {"name": "Player 3", "hand": [], "score": 0},
+            "W": {"name": "Player 4", "hand": [], "score": 0}
         },
         "current_round": 1,
-        "current_turn": "player1",
+        "current_turn": "N",
         "winner": None
     }
-    # Save the reset state to Google Sheets
     update_game_state(st.session_state.game_state)
-    print(st.session_state.game_state)
