@@ -28,8 +28,6 @@ def update_game_state(game_state):
     if response.status_code == 200:
         # 3. Sync `st.session_state.game_state` with the updated state
         st.session_state.game_state = game_state
-        # 4. Trigger a re-render of the page
-        st.rerun()
         return True
     else:
         st.error("Failed to update Google Sheets.")
