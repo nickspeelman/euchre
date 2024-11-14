@@ -5,6 +5,7 @@ from state_management import initialize_game_state, reset_game_state, update_gam
 from table_layout import display_players_around_table, display_game_controls
 
 # Step 1: Initialize the game state from Google Sheets or set a default
+reset_game_state()
 initialize_game_state()
 
 # Step 2: Display the players around the table
