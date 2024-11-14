@@ -5,7 +5,7 @@ import streamlit as st
 def display_players_around_table(players):
     """Displays players around a virtual table with positions N, E, S, W."""
     # Row 1: North player centered
-    col_N, _, _ = st.columns([1, 2, 1])
+    _, col_N, _ = st.columns([1, 2, 1])
     with col_N:
         st.subheader(players["N"]["name"])
         st.write(f"Hand: {players['N']['hand']}")
