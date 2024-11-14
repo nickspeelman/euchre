@@ -3,7 +3,7 @@ import streamlit as st
 def display_players_around_table(players):
     """Displays players around a virtual table with positions N, E, S, W."""
     col_N, col_center, col_E = st.columns([1, 2, 1])
-    col_W, col_S, col_center_bottom = st.columns([1, 2, 1])
+    col_W,  col_center_bottom, col_S = st.columns([1, 2, 1])
 
     # North player
     with col_N:
