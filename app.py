@@ -26,6 +26,7 @@ elif action == "deal_cards":
     )
     update_game_state(st.session_state.game_state)
     st.write(message)
+    st.rerun()
 
 elif action == "determine_winner":
     winner, winning_card, message = process_round_winner(st.session_state.game_state["players"])
