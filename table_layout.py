@@ -17,7 +17,7 @@ def display_players_around_table(players):
         )
 
     # Row 1: North player centered
-    col_N, _, _ = st.columns([1, 2, 1])
+    _, col_N, _ = st.columns([1, 2, 1])
     with col_N:
         centered_player_display(players["N"])
 
