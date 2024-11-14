@@ -45,22 +45,20 @@ def display_game_controls():
             unsafe_allow_html=True
         )
 
-        if st.button("Shuffle Deck"):
+        # Center buttons without nested divs
+        shuffle = st.button("Shuffle Deck")
+        deal = st.button("Deal Cards")
+        determine_winner = st.button("Determine Winner")
+        reset = st.button("Reset Game")
+
+        # Return action based on which button was clicked
+        if shuffle:
             return "shuffle_deck"
-
-        if st.button("Deal Cards"):
+        elif deal:
             return "deal_cards"
-
-        if st.button("Determine Winner"):
+        elif determine_winner:
             return "determine_winner"
-
-    # Bottom row for the reset button
-    col_center_bottom = st.columns([1, 2, 1])[1]
-    with col_center_bottom:
-        st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
-        if st.button("Reset Game"):
-            st.markdown("</div>", unsafe_allow_html=True)  # Close div after button
+        elif reset:
             return "reset_game"
 
     return None  # No action taken
-
