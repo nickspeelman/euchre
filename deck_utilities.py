@@ -1,4 +1,5 @@
 import random
+import streamlit as st
 from google_sheets_manager import update_game_state
 
 def create_euchre_deck():
