@@ -22,6 +22,7 @@ def update_game_state(game_state):
     # 1. Update Google Sheets
     headers = {"Content-Type": "application/json"}
     data = json.dumps({"key": ACCESS_KEY, **game_state})
+    print('Data sent to google sheets: ', data)
     response = requests.post(APPS_SCRIPT_URL, headers=headers, data=data)
 
     # 2. Check if update to Sheets was successful
