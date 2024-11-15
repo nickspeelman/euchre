@@ -3,6 +3,10 @@ from deck_utilities import shuffle_deck, deal_cards_to_players
 from high_card_rules import process_round_winner
 from state_management import initialize_game_state, reset_game_state, update_game_state
 from table_layout import display_players_around_table, display_game_controls
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 # Step 1: Initialize the game state from Google Sheets or set a default
 print("Starting App")
@@ -17,7 +21,7 @@ action = display_game_controls()
 
 # Handle actions from the game controls
 if action == "shuffle_deck":
-    print("Shuffling Deck.")
+    logger.info("Shuffling Deck.")
     st.session_state.game_state["deck"] = shuffle_deck(st.session_state.game_state["deck"])
     update_game_state(st.session_state.game_state)
     st.write("Deck shuffled!")
