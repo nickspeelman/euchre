@@ -1,8 +1,23 @@
 import streamlit as st
 
-def display_players_around_table(players):
-    """Displays players around a virtual table with positions N, E, S, W."""
+# Create a global container for the player table
+player_table_container = st.container()
 
+def display_players_around_table(players):
+    """Initial setup of the players around the table."""
+    with player_table_container:
+        # Render the initial table
+        _render_table(players)
+
+def update_table(players):
+    """Updates the table without recreating it."""
+    with player_table_container:
+        # Clear and re-render the table
+        player_table_container.empty()  # Clear existing content
+        _render_table(players)
+
+def _render_table(players):
+    """Internal helper to render the table."""
     def centered_player_display(player_data):
         """Helper function to create centered display for a player."""
         st.markdown(
@@ -33,32 +48,3 @@ def display_players_around_table(players):
     _, col_S, _ = st.columns([1, 2, 1])
     with col_S:
         centered_player_display(players["S"])
-
-def display_game_controls():
-    """Displays game control buttons in the center of the table layout."""
-    # Center column for main game controls
-    col_center = st.columns([1, 2, 1])[1]
-    with col_center:
-        st.markdown(
-            "<div style='text-align: center;'>"
-            "<h2>Game Controls</h2></div>",
-            unsafe_allow_html=True
-        )
-
-        # Center buttons without nested divs
-        shuffle = st.button("Shuffle Deck")
-        deal = st.button("Deal Cards")
-        determine_winner = st.button("Determine Winner")
-        reset = st.button("Reset Game")
-
-        # Return action based on which button was clicked
-        if shuffle:
-            return "shuffle_deck"
-        elif deal:
-            return "deal_cards"
-        elif determine_winner:
-            return "determine_winner"
-        elif reset:
-            return "reset_game"
-
-    return None  # No action taken

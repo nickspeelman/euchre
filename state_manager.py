@@ -3,7 +3,7 @@ from deck_manager import shuffle_deck, create_euchre_deck
 import requests
 import json
 from utilities import logger
-from table_manager import display_players_around_table
+from table_manager import display_players_around_table, update_table
 
 # Load the Apps Script URL and access key from Streamlit secrets
 APPS_SCRIPT_URL = st.secrets["APPS_SCRIPT_URL"]
@@ -81,7 +81,7 @@ def update_game_state(game_state):
         logger.info(f"Game State updated successfully: {game_state}")
 
         # 4. Automatically update the player table display
-        display_players_around_table(st.session_state.game_state["players"])
+        update_table(st.session_state.game_state["players"])
 
         return True
     else:
