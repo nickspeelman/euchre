@@ -80,7 +80,7 @@ def update_game_state(game_state):
         logger.info(f"Game State updated successfully: {game_state}")
 
         # 4. Automatically update the player table display
-        update_table(st.session_state.game_state['players'])
+        update_table(game_state['players'])
 
         return True
     else:
