@@ -1,6 +1,7 @@
 
 
 import streamlit as st
+from utilities import logger
 
 
 # Create a global container for the player table
