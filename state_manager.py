@@ -11,16 +11,15 @@ ACCESS_KEY = st.secrets["ACCESS_KEY"]
 
 def initialize_game_state():
     """Initialize the game state from Google Sheets or set up a default game state."""
-    if "game_state" not in st.session_state:
-        print("Initializing game state")  # Debugging print statement
+    if "game_state" in st.session_state:
 
         # Fetch the game state from Google Sheets
         game_state = get_game_state()
-        print("Fetched game state from Sheets:", game_state)  # Debugging print
+        logger.info(f"Fetched game state from Sheets: {game_state}")  # Debugging print
 
         # If there's no existing game data, reset to start a new game
         if not game_state:
-            print("No game data found. Resetting game state.")  # Debugging print
+            logger.infor("No game data found. Resetting game state.")  # Debugging print
             reset_game_state()  # Ensures "N", "E", "S", "W" are set
         else:
             # Use the existing game state from Google Sheets
@@ -36,8 +35,9 @@ def initialize_game_state():
                 "current_turn": game_state.get("current_turn", "N"),
                 "winner": game_state.get("winner", None)
             }
-            print("Game state initialized from Sheets:", st.session_state.game_state)  # Debugging print
-            update_game_state(st.session_state.game_state)
+            game_state = st.session_state.game_state
+            logger.info(f"Game state initialized from Sheets: {game_state}")  # Debugging print
+            update_game_state(game_state)
 def reset_game_state():
     """Reset the game state to the default configuration for a new game."""
     st.session_state.game_state = {

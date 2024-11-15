@@ -6,9 +6,7 @@ from high_card_rules import process_round_winner
 from utilities import logger
 
 # Step 1: Initialize the game state from Google Sheets or set a default
-logger.info('Initializing Game State')
 initialize_game_state()
-logger.info('Game State initlaized')
 
 
 # Step 3: Display game controls and check for actions
