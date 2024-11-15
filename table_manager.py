@@ -25,12 +25,21 @@ def _render_table(players):
     """Internal helper to render the table."""
     def centered_player_display(player_data):
         """Helper function to create centered display for a player."""
+        if not isinstance(player_data, dict):
+            logger.error(f"Invalid player data: {player_data}")
+            st.write("Error: Invalid player data")
+            return
+
+        name = player_data.get("name", "Unknown")
+        hand = player_data.get("hand", [])
+        score = player_data.get("score", 0)
+
         st.markdown(
             f"""
             <div style="text-align: center; padding: 10px;">
-                <h3>{player_data['name']}</h3>
-                <p>Hand: {player_data['hand']}</p>
-                <p>Score: {player_data['score']}</p>
+                <h3>{name}</h3>
+                <p>Hand: {hand}</p>
+                <p>Score: {score}</p>
             </div>
             """,
             unsafe_allow_html=True
