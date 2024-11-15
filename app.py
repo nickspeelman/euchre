@@ -1,6 +1,6 @@
 import streamlit as st
 from deck_manager import shuffle_deck, deal_cards_to_players
-from state_manager import reset_game_state, update_game_state, initialize_game_state
+from state_manager import initialize_game_state, reset_game_state, update_game_state
 from table_manager import display_game_controls, display_players_around_table
 from high_card_rules import process_round_winner
 from utilities import logger
