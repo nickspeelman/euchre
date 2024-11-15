@@ -19,6 +19,7 @@ def update_table(players):
         # Clear and re-render the table
         player_table_container.empty()  # Clear existing content
         _render_table(players)
+        logger.info('Table Updated')
 
 def _render_table(players):
     """Internal helper to render the table."""
@@ -82,4 +83,5 @@ def display_game_controls():
         elif reset:
             return "reset_game"
 
+    logger.info('Table Rendered')
     return None  # No action taken

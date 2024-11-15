@@ -75,7 +75,7 @@ def update_game_state(game_state):
         # 4. Automatically update the player table display
         logger.info(f'Players game state: {players_game_state}')
         update_table(players_game_state)
-        logger.info('Table Updated')
+
 
         return True
     else:
