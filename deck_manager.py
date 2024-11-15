@@ -1,5 +1,4 @@
 import random
-from state_manager import update_game_state
 
 def create_euchre_deck():
     """Creates a euchre deck with cards 9, 10, J, Q, K, A in each suit."""
@@ -26,7 +25,6 @@ def deal_cards_to_players(deck, players):
     """Deals one card to each player and updates the game state."""
     try:
         players = deal_one_card_to_each_player(deck, players)
-        update_game_state({"deck": deck, "players": players})
         return players, "Cards dealt to all players."
     except ValueError as e:
         return players, str(e)
