@@ -1,6 +1,5 @@
 import random
-import streamlit as st
-from google_sheets_manager import update_game_state
+from state_manager import update_game_state
 
 def create_euchre_deck():
     """Creates a euchre deck with cards 9, 10, J, Q, K, A in each suit."""
