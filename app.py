@@ -10,9 +10,6 @@ print("Starting App")
 reset_game_state()
 print("Game state reset")
 
-# Step 2: Display the players around the table
-display_players_around_table(st.session_state.game_state["players"])
-
 # Step 3: Display game controls and check for actions
 action = display_game_controls()
 
