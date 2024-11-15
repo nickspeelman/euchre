@@ -6,13 +6,16 @@ from table_manager import display_game_controls
 from utilities import logger
 
 # Step 1: Initialize the game state from Google Sheets or set a default
-print("Starting App")
+logger.info('Initializing Game State')
 initialize_game_state()
+logger.info('Game State initlaized, resetting game state')
 reset_game_state()
-print("Game state reset")
+logger.info('Game state reset')
 
 # Step 3: Display game controls and check for actions
+logger.info('Displaying game controls')
 action = display_game_controls()
+logger.info('Controls Displayed')
 
 # Handle actions from the game controls
 if action == "shuffle_deck":
