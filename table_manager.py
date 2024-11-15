@@ -31,8 +31,11 @@ def _render_table(players):
             return
 
         name = player_data.get("name", "Unknown")
+        logger.info(f"Name: {name}")
         hand = player_data.get("hand", [])
+        logger.info(f"Hand: {hand}")
         score = player_data.get("score", 0)
+        logger.info(f"Score: {score}")
 
         st.markdown(
             f"""
@@ -49,8 +52,7 @@ def _render_table(players):
     _, col_N, _ = st.columns([1, 2, 1])
     with col_N:
         centered_player_display(players["N"])
-        n_player = players["N"]
-        logger.info(f"N Player {n_player}")
+
 
     # Row 2: West and East players on the left and right
     col_W, col_center, col_E = st.columns([1, 2, 1])
