@@ -56,6 +56,7 @@ def _render_table(players):
     with col_S:
         centered_player_display(players["S"])
 
+    logger.info('Table Rendered')
 def display_game_controls():
     """Displays game control buttons in the center of the table layout."""
     # Center column for main game controls
@@ -83,5 +84,5 @@ def display_game_controls():
         elif reset:
             return "reset_game"
 
-    logger.info('Table Rendered')
+
     return None  # No action taken
