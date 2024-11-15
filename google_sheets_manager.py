@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 import json
 from utilities import  logger
+from table_layout import display_players_around_table
 
 # Load the Apps Script URL and access key from Streamlit secrets
 APPS_SCRIPT_URL = st.secrets["APPS_SCRIPT_URL"]
@@ -36,4 +37,5 @@ def update_game_state(game_state):
     else:
         st.error("Failed to update Google Sheets.")
         return False
+
 #%%

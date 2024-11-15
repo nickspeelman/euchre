@@ -42,4 +42,6 @@ elif action == "reset_game":
     reset_game_state()
     st.write("Game reset!")
 
+display_players_around_table(st.session_state.game_state["players"])
+
 #%%
