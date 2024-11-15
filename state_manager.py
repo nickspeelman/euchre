@@ -78,9 +78,12 @@ def update_game_state(game_state):
     if response.status_code == 200:
         # 3. Sync `st.session_state.game_state` with the updated state
         logger.info(f"Game State updated successfully: {game_state}")
+        players_game_state = game_state['players']
 
         # 4. Automatically update the player table display
-        update_table(game_state['players'])
+        logger.info(f'Players game state: {players_game_state}')
+        update_table(players_game_state)
+        logger.info('Table Updated')
 
         return True
     else:

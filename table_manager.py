@@ -38,6 +38,8 @@ def _render_table(players):
     _, col_N, _ = st.columns([1, 2, 1])
     with col_N:
         centered_player_display(players["N"])
+        n_player = players["N"]
+        logger.info(f"N Player {n_player}")
 
     # Row 2: West and East players on the left and right
     col_W, col_center, col_E = st.columns([1, 2, 1])
