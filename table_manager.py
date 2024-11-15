@@ -1,5 +1,7 @@
 import streamlit as st
 
+import streamlit as st
+
 # Create a global container for the player table
 player_table_container = st.container()
 
@@ -48,3 +50,32 @@ def _render_table(players):
     _, col_S, _ = st.columns([1, 2, 1])
     with col_S:
         centered_player_display(players["S"])
+
+def display_game_controls():
+    """Displays game control buttons in the center of the table layout."""
+    # Center column for main game controls
+    col_center = st.columns([1, 2, 1])[1]
+    with col_center:
+        st.markdown(
+            "<div style='text-align: center;'>"
+            "<h2>Game Controls</h2></div>",
+            unsafe_allow_html=True
+        )
+
+        # Center buttons without nested divs
+        shuffle = st.button("Shuffle Deck")
+        deal = st.button("Deal Cards")
+        determine_winner = st.button("Determine Winner")
+        reset = st.button("Reset Game")
+
+        # Return action based on which button was clicked
+        if shuffle:
+            return "shuffle_deck"
+        elif deal:
+            return "deal_cards"
+        elif determine_winner:
+            return "determine_winner"
+        elif reset:
+            return "reset_game"
+
+    return None  # No action taken
