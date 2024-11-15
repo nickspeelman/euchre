@@ -17,6 +17,7 @@ action = display_game_controls()
 
 # Handle actions from the game controls
 if action == "shuffle_deck":
+    print("Shuffling Deck.")
     st.session_state.game_state["deck"] = shuffle_deck(st.session_state.game_state["deck"])
     update_game_state(st.session_state.game_state)
     st.write("Deck shuffled!")
