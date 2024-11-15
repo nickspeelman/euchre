@@ -20,7 +20,6 @@ logger.info('Controls Displayed')
 
 # Handle actions from the game controls
 if action == "shuffle_deck":
-    logger.info("Shuffling Deck.")
     st.session_state.game_state["deck"] = shuffle_deck(st.session_state.game_state["deck"])
     update_game_state(st.session_state.game_state)
     st.write("Deck shuffled!")

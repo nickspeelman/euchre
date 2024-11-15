@@ -1,4 +1,5 @@
 import random
+from utilities import logger
 
 def create_euchre_deck():
     """Creates a euchre deck with cards 9, 10, J, Q, K, A in each suit."""
@@ -8,6 +9,7 @@ def create_euchre_deck():
 
 def shuffle_deck(deck):
     """Shuffles the given deck in place."""
+    logger.info("Shuffling Deck.")
     random.shuffle(deck)
     return deck
 
