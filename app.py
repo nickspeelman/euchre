@@ -1,13 +1,17 @@
 import streamlit as st
 from deck_manager import shuffle_deck, deal_cards_to_players
 from state_manager import reset_game_state, update_game_state, initialize_game_state
-from table_manager import display_game_controls
+from table_manager import display_game_controls, display_players_around_table
 from high_card_rules import process_round_winner
 from utilities import logger
 
 # Step 1: Initialize the game state from Google Sheets or set a default
 initialize_game_state()
 
+# Step 3: Display game controls and check for actions
+logger.info('Displaying table')
+action = display_players_around_table(st.session_state.game_state["players"])
+logger.info('Table Displayed')
 
 # Step 3: Display game controls and check for actions
 logger.info('Displaying game controls')
