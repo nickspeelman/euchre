@@ -77,7 +77,6 @@ def update_game_state(game_state):
     # 2. Check if update to Sheets was successful
     if response.status_code == 200:
         # 3. Sync `st.session_state.game_state` with the updated state
-        st.session_state.game_state = game_state
         logger.info(f"Game State updated successfully: {game_state}")
 
         # 4. Automatically update the player table display
