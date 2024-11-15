@@ -2,7 +2,7 @@ import streamlit as st
 from deck_manager import shuffle_deck, deal_cards_to_players
 from high_card_rules import process_round_winner
 from state_manager import reset_game_state, update_game_state
-from table_manager import display_players_around_table, display_game_controls
+from table_manager import display_game_controls
 from utilities import logger
 
 # Step 1: Initialize the game state from Google Sheets or set a default

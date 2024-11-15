@@ -14,7 +14,6 @@ def display_players_around_table(players):
 
 def update_table(players):
     """Updates the table without recreating it."""
-    logger.info(f"Game State before updating table: {st.session_state.game_state}")
     with player_table_container:
         # Clear and re-render the table
         player_table_container.empty()  # Clear existing content
