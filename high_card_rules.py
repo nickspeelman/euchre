@@ -1,4 +1,4 @@
-from google_sheets_manager import update_game_state
+from state_manager import update_game_state
 
 def determine_high_card_winner(players):
     """Determines the winner based on the high card in each player's hand."""
