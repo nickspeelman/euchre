@@ -1,8 +1,8 @@
 import streamlit as st
-from deck_utilities import shuffle_deck, deal_cards_to_players
+from deck_manager import shuffle_deck, deal_cards_to_players
 from high_card_rules import process_round_winner
-from state_management import initialize_game_state, reset_game_state, update_game_state
-from table_layout import display_players_around_table, display_game_controls
+from state_manager import reset_game_state, update_game_state
+from table_manager import display_players_around_table, display_game_controls
 from utilities import logger
 
 # Step 1: Initialize the game state from Google Sheets or set a default
@@ -42,6 +42,6 @@ elif action == "reset_game":
     reset_game_state()
     st.write("Game reset!")
 
-display_players_around_table(st.session_state.game_state["players"])
+
 
 #%%

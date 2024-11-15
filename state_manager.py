@@ -1,6 +1,13 @@
 import streamlit as st
-from google_sheets_manager import get_game_state, update_game_state
-from deck_utilities import shuffle_deck, create_euchre_deck
+from deck_manager import shuffle_deck, create_euchre_deck
+import requests
+import json
+from utilities import logger
+from table_manager import display_players_around_table
+
+# Load the Apps Script URL and access key from Streamlit secrets
+APPS_SCRIPT_URL = st.secrets["APPS_SCRIPT_URL"]
+ACCESS_KEY = st.secrets["ACCESS_KEY"]
 
 def initialize_game_state():
     """Initialize the game state from Google Sheets or set up a default game state."""
@@ -47,3 +54,37 @@ def reset_game_state():
     }
     print("Reset game state:", st.session_state.game_state)  # Debugging print statement
     update_game_state(st.session_state.game_state)
+
+def get_game_state():
+    """Fetch game state from Google Sheets."""
+    response = requests.get(APPS_SCRIPT_URL, params={"key": ACCESS_KEY})
+    print("Response content:", response.text)  # Debugging print statement
+    try:
+        return response.json() if response.status_code == 200 else {}
+    except ValueError:
+        print("Error decoding JSON. Response content:", response.text)
+        return {}
+
+# Function to update game state in Google Sheets via Apps Script
+def update_game_state(game_state):
+    # 1. Update Google Sheets
+    logger.info("Updating game state...")
+    headers = {"Content-Type": "application/json"}
+    data = json.dumps({"key": ACCESS_KEY, **game_state})
+    logger.info(f"Data sent to Google Sheets: {data}")
+    response = requests.post(APPS_SCRIPT_URL, headers=headers, data=data)
+
+    # 2. Check if update to Sheets was successful
+    if response.status_code == 200:
+        # 3. Sync `st.session_state.game_state` with the updated state
+        st.session_state.game_state = game_state
+        logger.info(f"Game State updated successfully: {game_state}")
+
+        # 4. Automatically update the player table display
+        display_players_around_table(st.session_state.game_state["players"])
+
+        return True
+    else:
+        logger.error(f"Failed to update Google Sheets. Status code: {response.status_code}, Response: {response.text}")
+        st.error("Failed to update Google Sheets.")
+        return False
