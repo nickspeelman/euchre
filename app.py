@@ -5,7 +5,9 @@ from state_management import initialize_game_state, reset_game_state, update_gam
 from table_layout import display_players_around_table, display_game_controls
 
 # Step 1: Initialize the game state from Google Sheets or set a default
+print("Starting App")
 reset_game_state()
+print("Game state reset")
 
 # Step 2: Display the players around the table
 display_players_around_table(st.session_state.game_state["players"])
@@ -37,3 +39,5 @@ elif action == "determine_winner":
 elif action == "reset_game":
     reset_game_state()
     st.write("Game reset!")
+
+#%%

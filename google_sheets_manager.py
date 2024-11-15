@@ -20,6 +20,7 @@ def get_game_state():
 # Function to update game state in Google Sheets via Apps Script
 def update_game_state(game_state):
     # 1. Update Google Sheets
+    print ("Updated game state")
     headers = {"Content-Type": "application/json"}
     data = json.dumps({"key": ACCESS_KEY, **game_state})
     print('Data sent to google sheets: ', data)
